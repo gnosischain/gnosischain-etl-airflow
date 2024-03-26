@@ -4,9 +4,9 @@ import os
 
 import pytest
 
-from ethereumetl_airflow.common import read_json_file
-from ethereumetl_airflow.parse.parse_table_definition_logic import parse
-from tests.ethereumetl_airflow.mock_bigquery_client import MockBigqueryClient
+from gnosischainetl_airflow.common import read_json_file
+from gnosischainetl_airflow.parse.parse_table_definition_logic import parse
+from tests.gnosischainetl_airflow.mock_bigquery_client import MockBigqueryClient
 
 sqls_folder = 'dags/resources/stages/parse/sqls'
 table_definitions_folder = 'dags/resources/stages/parse/table_definitions'
@@ -54,7 +54,7 @@ def table_definition_file_to_expected_file(table_definition_file, parse_all_part
 
 
 def read_resource(filename):
-    full_filepath = 'tests/resources/ethereumetl_airflow/test_parse/' + filename
+    full_filepath = 'tests/resources/gnosischainetl_airflow/test_parse/' + filename
     return open(full_filepath).read()
 
 

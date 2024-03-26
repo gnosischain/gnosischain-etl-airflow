@@ -2,17 +2,17 @@ import logging
 import os
 import time
 
-from ethereumetl_airflow.bigquery_utils import create_view
-from ethereumetl_airflow.common import read_file, read_json_file
-from ethereumetl_airflow.parse.parse_state_manager import ParseStateManager
-from ethereumetl_airflow.parse.parse_table_definition_logic import (
+from gnosischainetl_airflow.bigquery_utils import create_view
+from gnosischainetl_airflow.common import read_file, read_json_file
+from gnosischainetl_airflow.parse.parse_state_manager import ParseStateManager
+from gnosischainetl_airflow.parse.parse_table_definition_logic import (
     create_dataset,
     parse,
     ref_regex,
     replace_refs,
 )
-from ethereumetl_airflow.parse.table_definition import TableDefinitionFileType
-from ethereumetl_airflow.parse.table_definition_reader import (
+from gnosischainetl_airflow.parse.table_definition import TableDefinitionFileType
+from gnosischainetl_airflow.parse.table_definition_reader import (
     read_table_definitions,
     toposort_and_read_table_definition_states,
 )

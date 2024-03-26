@@ -2,8 +2,8 @@ from __future__ import print_function
 
 import logging
 
-from ethereumetl_airflow.build_amend_dag import build_amend_dag
-from ethereumetl_airflow.variables import read_amend_dag_vars
+from gnosischainetl_airflow.build_amend_dag import build_amend_dag
+from gnosischainetl_airflow.variables import read_amend_dag_vars
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)

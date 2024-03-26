@@ -73,8 +73,8 @@ def build_partition_dag(
                 dependency >> extract_operator
         return extract_operator
 
-    wait_for_ethereum_load_dag_task = ExternalTaskSensor(
-        task_id='wait_for_ethereum_load_dag',
+    wait_for_gnosischain_load_dag_task = ExternalTaskSensor(
+        task_id='wait_for_gnosischain_load_dag',
         external_dag_id=load_dag_id,
         external_task_id='send_email',
         execution_delta=timedelta(hours=1),
@@ -88,9 +88,9 @@ def build_partition_dag(
     partition_traces_task = add_partition_tasks('traces', SQL_TEMPLATE_TRACES)
     partition_balances_task = add_partition_tasks('balances', SQL_TEMPLATE_BALANCES)
 
-    wait_for_ethereum_load_dag_task >> partition_logs_task
-    wait_for_ethereum_load_dag_task >> partition_traces_task
-    wait_for_ethereum_load_dag_task >> partition_balances_task
+    wait_for_gnosischain_load_dag_task >> partition_logs_task
+    wait_for_gnosischain_load_dag_task >> partition_traces_task
+    wait_for_gnosischain_load_dag_task >> partition_balances_task
 
     done_task = BashOperator(
         task_id='done',
@@ -141,7 +141,7 @@ WHERE date(block_timestamp) = '{ds}'
 
 SQL_TEMPLATE_BALANCES = '''
 CREATE OR REPLACE TABLE
-  `{partitioned_project_id}.common.ethereum_balances_{ds_with_underscores}`
+  `{partitioned_project_id}.common.gnosischain_balances_{ds_with_underscores}`
 OPTIONS(
   expiration_timestamp=TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 7 DAY)
 )
@@ -151,7 +151,7 @@ SELECT *
 FROM `{public_project_id}.{public_dataset_name}.balances`;
 
 CREATE OR REPLACE VIEW
-  `{partitioned_project_id}.common.ethereum_balances_live`
+  `{partitioned_project_id}.common.gnosischain_balances_live`
 AS
 
 with latest_double_entry_book as (
@@ -206,7 +206,7 @@ latest_balance_changes as (
   group by address
 )
 select address, coalesce(sum(eth_balance), 0) + coalesce(sum(eth_change), 0) as eth_balance
-from `{partitioned_project_id}.common.ethereum_balances_{ds_with_underscores}` as historical_balances
+from `{partitioned_project_id}.common.gnosischain_balances_{ds_with_underscores}` as historical_balances
 full outer join latest_balance_changes using(address)
 group by address;
 '''

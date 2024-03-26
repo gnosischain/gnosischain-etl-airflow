@@ -1,7 +1,7 @@
 import os.path
 
-from ethereumetl_airflow.build_verify_streaming_dag import read_file
-from ethereumetl_airflow.parse.table_definition_reader import calculate_content_hash
+from gnosischainetl_airflow.build_verify_streaming_dag import read_file
+from gnosischainetl_airflow.parse.table_definition_reader import calculate_content_hash
 
 
 class MockParseStateManager:

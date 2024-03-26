@@ -3,8 +3,8 @@ import logging
 
 from google.cloud import bigquery
 
-from ethereumetl_airflow.parse.parse_dataset_folder_logic import parse_dataset_folder
-from ethereumetl_airflow.parse.parse_state_manager import ParseStateManager
+from gnosischainetl_airflow.parse.parse_dataset_folder_logic import parse_dataset_folder
+from gnosischainetl_airflow.parse.parse_state_manager import ParseStateManager
 
 # initialize argument parser
 parser = argparse.ArgumentParser(

@@ -57,7 +57,6 @@ def build_export_dag(
     if notification_emails and len(notification_emails) > 0:
         default_dag_args['email'] = [email.strip() for email in notification_emails.split(',')]
 
-    export_daofork_traces_option = kwargs.get('export_daofork_traces_option')
     export_genesis_traces_option = kwargs.get('export_genesis_traces_option')
     export_blocks_and_transactions_toggle = kwargs.get('export_blocks_and_transactions_toggle')
     export_receipts_and_logs_toggle = kwargs.get('export_receipts_and_logs_toggle')
@@ -256,9 +255,9 @@ def build_export_dag(
         with TemporaryDirectory(dir=TEMP_DIR) as tempdir:
             start_block, end_block = get_block_range(tempdir, logical_date, provider_uri)
 
-            logging.info('Calling export_traces({}, {}, {}, ...,{}, {}, {}, {})'.format(
+            logging.info('Calling export_traces({}, {}, {}, ...,{}, {}, {})'.format(
                 start_block, end_block, export_batch_size, export_max_workers, provider_uri,
-                export_genesis_traces_option, export_daofork_traces_option
+                export_genesis_traces_option
             ))
             export_traces.callback(
                 start_block=start_block,
@@ -267,8 +266,7 @@ def build_export_dag(
                 output=os.path.join(tempdir, "traces.json"),
                 max_workers=export_max_workers,
                 provider_uri=provider_uri,
-                genesis_traces=export_genesis_traces_option,
-                daofork_traces=export_daofork_traces_option,
+                genesis_traces=export_genesis_traces_option
             )
 
             copy_to_export_path(

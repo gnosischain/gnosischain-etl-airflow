@@ -2,12 +2,12 @@ import hashlib
 import json
 from typing import List
 
-from ethereumetl_airflow.common import get_list_of_files, read_file
-from ethereumetl_airflow.parse.parse_state_manager import ParseStateManager
-from ethereumetl_airflow.parse.parse_table_definition_logic import ref_regex
-from ethereumetl_airflow.parse.table_definition import TableDefinition, TableDefinitionFileType
-from ethereumetl_airflow.parse.table_definition_state import TableDefinitionState
-from ethereumetl_airflow.parse.toposort import toposort_flatten
+from gnosischainetl_airflow.common import get_list_of_files, read_file
+from gnosischainetl_airflow.parse.parse_state_manager import ParseStateManager
+from gnosischainetl_airflow.parse.parse_table_definition_logic import ref_regex
+from gnosischainetl_airflow.parse.table_definition import TableDefinition, TableDefinitionFileType
+from gnosischainetl_airflow.parse.table_definition_state import TableDefinitionState
+from gnosischainetl_airflow.parse.toposort import toposort_flatten
 
 
 # Reads table definitions from a dataset_folder and returns a list of TableDefinition objects

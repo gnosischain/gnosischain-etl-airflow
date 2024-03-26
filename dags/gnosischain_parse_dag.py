@@ -4,8 +4,8 @@ from glob import glob
 import logging
 import os
 
-from ethereumetl_airflow.build_parse_dag import build_parse_dag
-from ethereumetl_airflow.variables import read_parse_dag_vars
+from gnosischainetl_airflow.build_parse_dag import build_parse_dag
+from gnosischainetl_airflow.variables import read_parse_dag_vars
 
 DAGS_FOLDER = os.environ.get('DAGS_FOLDER', '/home/airflow/gcs/dags')
 table_definitions_folder = os.path.join(DAGS_FOLDER, 'resources/stages/parse/table_definitions/*')

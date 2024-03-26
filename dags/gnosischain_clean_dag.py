@@ -3,7 +3,7 @@ from __future__ import print_function
 import logging
 import os
 
-from ethereumetl_airflow.build_clean_dag import build_clean_dag
+from gnosischainetl_airflow.build_clean_dag import build_clean_dag
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)

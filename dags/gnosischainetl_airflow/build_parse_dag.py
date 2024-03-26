@@ -11,10 +11,10 @@ from airflow.operators.python import PythonOperator
 from airflow.sensors.external_task import ExternalTaskSensor
 from google.cloud import bigquery
 
-from ethereumetl_airflow.bigquery_utils import share_dataset_all_users_read
-from ethereumetl_airflow.common import read_json_file, get_list_of_files
-from ethereumetl_airflow.parse.parse_dataset_folder_logic import parse_dataset_folder
-from ethereumetl_airflow.parse.parse_state_manager import ParseStateManager
+from gnosischainetl_airflow.bigquery_utils import share_dataset_all_users_read
+from gnosischainetl_airflow.common import read_json_file, get_list_of_files
+from gnosischainetl_airflow.parse.parse_dataset_folder_logic import parse_dataset_folder
+from gnosischainetl_airflow.parse.parse_state_manager import ParseStateManager
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)
@@ -105,7 +105,7 @@ def build_parse_dag(
 
         return share_dataset_operator
 
-    wait_for_ethereum_load_dag_task = ExternalTaskSensor(
+    wait_for_gnosischain_load_dag_task = ExternalTaskSensor(
         task_id='wait_for_gnosischain_partition_dag',
         external_dag_id=PARTITION_DAG_ID,
         external_task_id='done',
@@ -117,7 +117,7 @@ def build_parse_dag(
         dag=dag)
 
     parse_task = create_parse_task()
-    wait_for_ethereum_load_dag_task >> parse_task
+    wait_for_gnosischain_load_dag_task >> parse_task
 
     checkpoint_task = BashOperator(
         task_id='parse_all_checkpoint',

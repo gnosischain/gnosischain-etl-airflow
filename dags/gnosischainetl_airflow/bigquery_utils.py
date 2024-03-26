@@ -4,7 +4,7 @@ import logging
 from google.cloud import bigquery
 from google.api_core.exceptions import Conflict, NotFound
 
-from ethereumetl_airflow.common import read_file
+from gnosischainetl_airflow.common import read_file
 
 
 def submit_bigquery_job(job, configuration):

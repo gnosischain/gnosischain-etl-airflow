@@ -3,8 +3,8 @@ import os
 
 import pytest
 
-from ethereumetl_airflow.parse.table_definition_reader import read_table_definitions, toposort_and_read_table_definition_states
-from tests.ethereumetl_airflow.mock_parse_state_manager import MockParseStateManager
+from gnosischainetl_airflow.parse.table_definition_reader import read_table_definitions, toposort_and_read_table_definition_states
+from tests.gnosischainetl_airflow.mock_parse_state_manager import MockParseStateManager
 
 table_definitions_folder = 'dags/resources/stages/parse/table_definitions'
 

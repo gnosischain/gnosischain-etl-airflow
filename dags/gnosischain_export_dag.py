@@ -1,7 +1,7 @@
 from __future__ import print_function
 
-from ethereumetl_airflow.build_export_dag import build_export_dag
-from ethereumetl_airflow.variables import read_export_dag_vars
+from gnosischainetl_airflow.build_export_dag import build_export_dag
+from gnosischainetl_airflow.variables import read_export_dag_vars
 
 # airflow DAG
 DAG = build_export_dag(

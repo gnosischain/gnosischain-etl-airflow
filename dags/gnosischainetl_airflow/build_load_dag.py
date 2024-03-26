@@ -14,7 +14,7 @@ from airflow.operators.python import PythonOperator
 from google.cloud import bigquery
 from google.cloud.bigquery import TimePartitioning, SchemaField
 
-from ethereumetl_airflow.bigquery_utils import submit_bigquery_job
+from gnosischainetl_airflow.bigquery_utils import submit_bigquery_job
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)
@@ -339,8 +339,8 @@ def build_load_dag(
         send_email_task = EmailOperator(
             task_id='send_email',
             to=[email.strip() for email in notification_emails.split(',')],
-            subject='Ethereum ETL Airflow Load DAG Succeeded',
-            html_content='Ethereum ETL Airflow Load DAG Succeeded - {}'.format(chain),
+            subject='GnosisChain ETL Airflow Load DAG Succeeded',
+            html_content='GnosisChain ETL Airflow Load DAG Succeeded - {}'.format(chain),
             dag=dag
         )
         load_metadata_task >> send_email_task

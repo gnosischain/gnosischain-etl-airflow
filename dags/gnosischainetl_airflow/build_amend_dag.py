@@ -8,8 +8,8 @@ from airflow import models
 from airflow.operators.python import PythonOperator
 from google.cloud import bigquery
 
-from ethereumetl_airflow.bigquery_utils import submit_bigquery_job, create_view, read_bigquery_schema_from_file
-from ethereumetl_airflow.common import read_file
+from gnosischainetl_airflow.bigquery_utils import submit_bigquery_job, create_view, read_bigquery_schema_from_file
+from gnosischainetl_airflow.common import read_file
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)

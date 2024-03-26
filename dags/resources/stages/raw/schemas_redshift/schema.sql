@@ -1,8 +1,8 @@
-CREATE SCHEMA IF NOT EXISTS ethereum;
+CREATE SCHEMA IF NOT EXISTS gnosischain;
 
-DROP TABLE IF EXISTS ethereum.blocks;
+DROP TABLE IF EXISTS gnosischain.blocks;
 
-CREATE TABLE ethereum.blocks (
+CREATE TABLE gnosischain.blocks (
   number            BIGINT         NOT NULL,     -- The block number
   hash              VARCHAR(65535) NOT NULL,     -- Hash of the block
   parent_hash       VARCHAR(65535) NOT NULL,     -- Hash of the parent block
@@ -28,9 +28,9 @@ SORTKEY (timestamp);
 
 --
 
-DROP TABLE IF EXISTS ethereum.contracts;
+DROP TABLE IF EXISTS gnosischain.contracts;
 
-CREATE TABLE ethereum.contracts (
+CREATE TABLE gnosischain.contracts (
   address            VARCHAR(65535) NOT NULL, -- Address of the contract
   bytecode           VARCHAR(65535) NOT NULL, -- Bytecode of the contract
   function_sighashes VARCHAR(65535) NOT NULL, -- 4-byte function signature hashes
@@ -43,9 +43,9 @@ SORTKEY (address);
 
 --
 
-DROP TABLE IF EXISTS ethereum.logs;
+DROP TABLE IF EXISTS gnosischain.logs;
 
-CREATE TABLE ethereum.logs (
+CREATE TABLE gnosischain.logs (
   log_index         BIGINT         NOT NULL, -- Integer of the log index position in the block
   transaction_hash  VARCHAR(65535) NOT NULL, -- Hash of the transactions this log was created from
   transaction_index BIGINT         NOT NULL, -- Integer of the transactions index position log was created from
@@ -61,9 +61,9 @@ SORTKEY (log_index);
 
 --
 
-DROP TABLE IF EXISTS ethereum.receipts;
+DROP TABLE IF EXISTS gnosischain.receipts;
 
-CREATE TABLE ethereum.receipts (
+CREATE TABLE gnosischain.receipts (
   transaction_hash    VARCHAR(65535) NOT NULL,     -- Hash of the transaction
   transaction_index   BIGINT         NOT NULL,     -- Integer of the transactions index position in the block
   block_hash          VARCHAR(65535) NOT NULL,     -- Hash of the block where this transaction was in
@@ -80,9 +80,9 @@ SORTKEY (transaction_index);
 
 --
 
-DROP TABLE IF EXISTS ethereum.token_transfers;
+DROP TABLE IF EXISTS gnosischain.token_transfers;
 
-CREATE TABLE ethereum.token_transfers (
+CREATE TABLE gnosischain.token_transfers (
   token_address    VARCHAR(65535) NOT NULL, -- ERC20 token address
   from_address     VARCHAR(65535) NOT NULL, -- Address of the sender
   to_address       VARCHAR(65535) NOT NULL, -- Address of the receiver
@@ -97,9 +97,9 @@ SORTKEY (log_index);
 
 --
 
-DROP TABLE IF EXISTS ethereum.tokens;
+DROP TABLE IF EXISTS gnosischain.tokens;
 
-CREATE TABLE ethereum.tokens (
+CREATE TABLE gnosischain.tokens (
   address      VARCHAR(65535) NOT NULL,     -- The address of the ERC20 token
   symbol       VARCHAR(65535) DEFAULT NULL, -- The symbol of the ERC20 token
   name         VARCHAR(65535) DEFAULT NULL, -- The name of the ERC20 token
@@ -112,9 +112,9 @@ SORTKEY (address);
 
 --
 
-DROP TABLE IF EXISTS ethereum.traces;
+DROP TABLE IF EXISTS gnosischain.traces;
 
-CREATE TABLE ethereum.traces (
+CREATE TABLE gnosischain.traces (
   block_number      BIGINT         NOT NULL, -- Block number where this trace was in
   transaction_hash  VARCHAR(65535) NOT NULL, -- Transaction hash where this trace was in
   transaction_index BIGINT         NOT NULL, -- Integer of the transactions index position in the block
@@ -137,9 +137,9 @@ SORTKEY (transaction_index);
 
 --
 
-DROP TABLE IF EXISTS ethereum.transactions;
+DROP TABLE IF EXISTS gnosischain.transactions;
 
-CREATE TABLE ethereum.transactions (
+CREATE TABLE gnosischain.transactions (
   hash              VARCHAR(65535) NOT NULL,     -- Hash of the transaction
   nonce             BIGINT         NOT NULL,     -- The number of transactions made by the sender prior to this one
   block_hash        VARCHAR(65535) NOT NULL,     -- Hash of the block where this transaction was in

@@ -37,8 +37,6 @@ def read_export_dag_vars(var_prefix, **kwargs):
         'export_batch_size': parse_int(read_var('export_batch_size', var_prefix, True, **kwargs)),
         'export_retries': parse_int(read_var('export_retries', var_prefix, True, **kwargs)),
         # toggles
-        'export_daofork_traces_option': parse_bool(
-            read_var('export_daofork_traces_option', var_prefix, False, **kwargs)),
         'export_genesis_traces_option': parse_bool(
             read_var('export_genesis_traces_option', var_prefix, False, **kwargs)),
         'export_blocks_and_transactions_toggle': parse_bool(

@@ -8,9 +8,9 @@ from google.cloud import bigquery
 
 from google.api_core.exceptions import Conflict
 
-from ethereumetl_airflow.bigquery_utils import submit_bigquery_job, read_bigquery_schema_from_json_recursive, query, \
+from gnosischainetl_airflow.bigquery_utils import submit_bigquery_job, read_bigquery_schema_from_json_recursive, query, \
     create_view, does_table_exist
-from ethereumetl_airflow.parse.templates import render_parse_udf_template, render_parse_sql_template, \
+from gnosischainetl_airflow.parse.templates import render_parse_udf_template, render_parse_sql_template, \
     render_merge_template, render_stitch_view_template
 
 ref_regex = re.compile(r"ref\(\'([^']+)\'\)")
@@ -31,7 +31,7 @@ def parse(
     # Refer to this issue for more detail https://github.com/blockchain-etl/ethereum-etl-airflow/issues/80.
 
     internal_project_id = destination_project_id + '-internal'
-    dataset_name = 'ethereum_' + table_definition['table']['dataset_name']
+    dataset_name = 'gnosischain_' + table_definition['table']['dataset_name']
 
     create_or_replace_internal_view(
         bigquery_client=bigquery_client,

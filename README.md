@@ -65,7 +65,7 @@ Create variables in Airflow (**Admin > Variables** in the UI):
 | gnosischain_load_all_partitions                  | True                                       |
 | notification_emails                              | email for notifications                    |
 
-Check other variables in `dags/ethereumetl_airflow/variables.py`.
+Check other variables in `dags/gnosischainetl_airflow/variables.py`.
 
 ### Updating package requirements
 Suggested package requirements for Composer are stored in `requirements_airflow.txt`.
