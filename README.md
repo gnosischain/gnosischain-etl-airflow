@@ -1,6 +1,6 @@
-# Ethereum ETL Airflow
+# GnosisChain ETL Airflow
 
-Read this article: https://cloud.google.com/blog/products/data-analytics/ethereum-bigquery-how-we-built-dataset
+This project is based on [Ethereum ETL Airflow](https://github.com/blockchain-etl/ethereum-etl-airflow), all the components have been renamed into `gnosischain_` and DAG code adapted to handle Gnosis Chain data. 
 
 ## Setting up Airflow DAGs using Google Cloud Composer
 
@@ -54,12 +54,16 @@ gcloud composer environments update \
 
 Create variables in Airflow (**Admin > Variables** in the UI):
 
-| Variable                                   | Description                             |
-|--------------------------------------------|-----------------------------------------|
-| gnosischain_output_bucket                  | GCS bucket to store exported files      |
-| gnosischain_provider_uris                  | Comma separated URIs of Ethereum nodes  |
-| gnosischain_destination_dataset_project_id | Project ID of BigQuery datasets         |
-| notification_emails                        | email for notifications                 |
+| Variable                                         | Description                                |
+|--------------------------------------------------|--------------------------------------------|
+| gnosischain_output_bucket                        | GCS bucket to store exported files         |
+| gnosischain_provider_uris                        | Comma separated URIs of GnosisChain nodes  |
+| gnosischain_provider_uris_archival               | Comma separated URIs of GnosisChain nodes  |
+| gnosischain_destination_dataset_project_id       | Project ID of BigQuery datasets            |
+| gnosischain_parse_destination_dataset_project_id | Project ID of BigQuery datasets            |
+| gnosischain_export_start_date                    | Start date of export jobs (yyyy-mm-dd)     |
+| gnosischain_load_all_partitions                  | True                                       |
+| notification_emails                              | email for notifications                    |
 
 Check other variables in `dags/ethereumetl_airflow/variables.py`.
 
