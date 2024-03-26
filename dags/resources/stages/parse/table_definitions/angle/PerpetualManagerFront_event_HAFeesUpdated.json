@@ -1,0 +1,54 @@
+{
+    "parser": {
+        "abi": {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint64[]",
+                    "name": "_xHAFees",
+                    "type": "uint64[]"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint64[]",
+                    "name": "_yHAFees",
+                    "type": "uint64[]"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint8",
+                    "name": "deposit",
+                    "type": "uint8"
+                }
+            ],
+            "name": "HAFeesUpdated",
+            "type": "event"
+        },
+        "contract_address": "SELECT _perpetualManager FROM ref('StableMasterFront_event_CollateralDeployed')",
+        "field_mapping": {},
+        "type": "log"
+    },
+    "table": {
+        "dataset_name": "angle",
+        "schema": [
+            {
+                "description": "",
+                "name": "_xHAFees",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "_yHAFees",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "deposit",
+                "type": "STRING"
+            }
+        ],
+        "table_description": "",
+        "table_name": "PerpetualManagerFront_event_HAFeesUpdated"
+    }
+}

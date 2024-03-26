@@ -1,0 +1,43 @@
+{
+    "parser": {
+        "abi": {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "keeperAddress",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "liquidationFees",
+                    "type": "uint256"
+                }
+            ],
+            "name": "KeeperTransferred",
+            "type": "event"
+        },
+        "contract_address": "SELECT _perpetualManager FROM ref('StableMasterFront_event_CollateralDeployed')",
+        "field_mapping": {},
+        "type": "log"
+    },
+    "table": {
+        "dataset_name": "angle",
+        "schema": [
+            {
+                "description": "",
+                "name": "keeperAddress",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "liquidationFees",
+                "type": "STRING"
+            }
+        ],
+        "table_description": "",
+        "table_name": "PerpetualManagerFront_event_KeeperTransferred"
+    }
+}

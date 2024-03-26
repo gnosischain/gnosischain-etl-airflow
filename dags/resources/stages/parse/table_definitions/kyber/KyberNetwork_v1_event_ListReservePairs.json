@@ -1,0 +1,61 @@
+{
+    "parser": {
+        "abi": {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "name": "reserve",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "src",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "dest",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "add",
+                    "type": "bool"
+                }
+            ],
+            "name": "ListReservePairs",
+            "type": "event"
+        },
+        "contract_address": "0x964f35fae36d75b1e72770e244f6595b68508cf5",
+        "field_mapping": {},
+        "type": "log"
+    },
+    "table": {
+        "dataset_name": "kyber",
+        "schema": [
+            {
+                "description": "",
+                "name": "reserve",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "src",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "dest",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "add",
+                "type": "STRING"
+            }
+        ],
+        "table_description": "",
+        "table_name": "KyberNetwork_v1_event_ListReservePairs"
+    }
+}

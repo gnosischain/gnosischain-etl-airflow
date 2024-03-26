@@ -1,0 +1,7 @@
+{
+    "gnosischain_destination_dataset_project_id": "<PROJECT ID>",
+    "gnosischain_load_all_partitions": false,
+    "gnosischain_output_bucket": "<OUTPUT BUCKET>",
+    "gnosischain_parse_destination_dataset_project_id": "<PROJECT ID>",
+    "gnosischain_provider_uris": "<PROVIDER URIS>"
+}

@@ -1,0 +1,120 @@
+{
+    "parser": {
+        "abi": {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "liquidator",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "violator",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "underlying",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "collateral",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "repay",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "yield",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "healthScore",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "baseDiscount",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "discount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Liquidation",
+            "type": "event"
+        },
+        "contract_address": "0x27182842e098f60e3d576794a5bffb0777e025d3",
+        "field_mapping": {},
+        "type": "log"
+    },
+    "table": {
+        "dataset_name": "euler",
+        "schema": [
+            {
+                "description": "",
+                "name": "liquidator",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "violator",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "underlying",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "collateral",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "repay",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "yield",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "healthScore",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "baseDiscount",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "discount",
+                "type": "STRING"
+            }
+        ],
+        "table_description": "",
+        "table_name": "Euler_event_Liquidation"
+    }
+}

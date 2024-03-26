@@ -1,0 +1,43 @@
+{
+    "parser": {
+        "abi": {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_perpetualID",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_closeAmount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "PerpetualClosed",
+            "type": "event"
+        },
+        "contract_address": "SELECT _perpetualManager FROM ref('StableMasterFront_event_CollateralDeployed')",
+        "field_mapping": {},
+        "type": "log"
+    },
+    "table": {
+        "dataset_name": "angle",
+        "schema": [
+            {
+                "description": "",
+                "name": "_perpetualID",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "_closeAmount",
+                "type": "STRING"
+            }
+        ],
+        "table_description": "",
+        "table_name": "PerpetualManagerFront_event_PerpetualClosed"
+    }
+}

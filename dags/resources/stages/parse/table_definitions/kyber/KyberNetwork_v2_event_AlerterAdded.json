@@ -1,0 +1,41 @@
+{
+    "parser": {
+        "abi": {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "name": "newAlerter",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "isAdd",
+                    "type": "bool"
+                }
+            ],
+            "name": "AlerterAdded",
+            "type": "event"
+        },
+        "contract_address": "0x91a502c678605fbce581eae053319747482276b9",
+        "field_mapping": {},
+        "type": "log"
+    },
+    "table": {
+        "dataset_name": "kyber",
+        "schema": [
+            {
+                "description": "",
+                "name": "newAlerter",
+                "type": "STRING"
+            },
+            {
+                "description": "",
+                "name": "isAdd",
+                "type": "STRING"
+            }
+        ],
+        "table_description": "",
+        "table_name": "KyberNetwork_v2_event_AlerterAdded"
+    }
+}
