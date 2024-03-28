@@ -18,7 +18,7 @@ This project is based on [Ethereum ETL Airflow](https://github.com/blockchain-et
 Create a new Cloud Composer environment:
 
 ```bash
-export ENVIRONMENT_NAME=ethereum-etl-0
+export ENVIRONMENT_NAME=gnosischain-etl-0
 
 AIRFLOW_CONFIGS_ARR=(
     "celery-worker_concurrency=8"
@@ -72,7 +72,7 @@ Suggested package requirements for Composer are stored in `requirements_airflow.
 
 You can update the Composer environment using the follow script:
 ```bash
-ENVIRONMENT_NAME="ethereum-etl-0"
+ENVIRONMENT_NAME="gnosischain-etl-0"
 LOCAL_REQUIREMENTS_PATH="$(mktemp)"
 
 # grep pattern removes comments and whitespace:
@@ -80,7 +80,7 @@ cat "./requirements_airflow.txt" | grep -o '^[^#| ]*' > "$LOCAL_REQUIREMENTS_PAT
 
 gcloud composer environments update \
   "$ENVIRONMENT_NAME" \
-  --location="us-central1" \
+  --location="eu-central1" \
   --update-pypi-packages-from-file="$LOCAL_REQUIREMENTS_PATH"
 ```
 
