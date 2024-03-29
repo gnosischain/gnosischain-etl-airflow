@@ -21,7 +21,7 @@ if cloud_provider == 'gcp':
         chain='gnosischain',
         **read_load_dag_vars(
             var_prefix='gnosischain_',
-            schedule_interval='30 8 * * *'
+            schedule_interval='55 15 * * *'
         )
     )
 elif cloud_provider == 'aws':
@@ -31,7 +31,7 @@ elif cloud_provider == 'aws':
         chain='gnosischain',
         **read_load_dag_redshift_vars(
             var_prefix='gnosischain_',
-            schedule_interval='30 1 * * *'
+            # schedule_interval='30 1 * * *'
         )
     )
 else:

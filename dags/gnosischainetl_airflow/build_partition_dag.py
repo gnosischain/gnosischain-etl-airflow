@@ -43,9 +43,9 @@ def build_partition_dag(
         schedule_interval=schedule_interval,
         default_args=default_dag_args)
 
-    def add_partition_tasks(task, sql_template, dependencies=None):
+    def add_partition_tasks(task, sql_template, dependencies=None, bigquery_location='EU'):
         def enrich_task(ds, **kwargs):
-            client = bigquery.Client()
+            client = bigquery.Client(location=bigquery_location)
 
             ds_with_underscores = ds.replace('-', '_')
             sql = sql_template.format(

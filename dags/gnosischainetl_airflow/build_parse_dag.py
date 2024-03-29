@@ -28,7 +28,7 @@ def build_parse_dag(
         dataset_folder,
         parse_destination_dataset_project_id,
         notification_emails=None,
-        parse_start_date=datetime(2018, 7, 1),
+        parse_start_date=datetime(2018, 10, 8),
         schedule_interval='0 0 * * *',
         parse_all_partitions=None
 ):
@@ -60,10 +60,10 @@ def build_parse_dag(
 
     def create_parse_task():
 
-        def parse_task(ds, **kwargs):
+        def parse_task(ds, bigquery_location='EU', **kwargs):
             validate_definition_files(dataset_folder)
 
-            client = bigquery.Client()
+            client = bigquery.Client(location=bigquery_location)
 
             parse_dataset_folder(
                 bigquery_client=client,
@@ -88,11 +88,11 @@ def build_parse_dag(
         return parsing_operator
 
     def create_share_dataset_task(dataset_name):
-        def share_dataset_task(**kwargs):
+        def share_dataset_task(bigquery_location='EU', **kwargs):
             if parse_destination_dataset_project_id != 'blockchain-etl':
                 logging.info('Skipping sharing dataset.')
             else:
-                client = bigquery.Client()
+                client = bigquery.Client(location=bigquery_location)
                 share_dataset_all_users_read(client, f'{parse_destination_dataset_project_id}.{dataset_name}')
                 share_dataset_all_users_read(client, f'{parse_destination_dataset_project_id}-internal.{dataset_name}')
 

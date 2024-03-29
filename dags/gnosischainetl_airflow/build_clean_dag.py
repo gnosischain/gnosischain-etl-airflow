@@ -39,9 +39,9 @@ def build_clean_dag(
         schedule_interval=schedule_interval,
         default_args=default_dag_args)
 
-    def add_clean_tasks(task, start_index, end_index, sql_statement_template, dependencies=None):
+    def add_clean_tasks(task, start_index, end_index, sql_statement_template, dependencies=None, bigquery_location='EU'):
         def clean_task(ds, **kwargs):
-            client = bigquery.Client()
+            client = bigquery.Client(location=bigquery_location)
 
             script = generate_clean_partitioned_logs_script(ds, start_index, end_index, sql_statement_template)
             print(script)
@@ -96,8 +96,8 @@ def build_clean_dag(
     return dag
 
 
-CLEAN_LOGS_SQL_STATEMENT_TEMPLATE = 'DELETE FROM `blockchain-etl-internal.crypto_gnosischain_partitioned.logs_by_topic_{table_suffix}` WHERE DATE(block_timestamp) <= \'{ds}\';\n'
-CLEAN_TRACES_SQL_STATEMENT_TEMPLATE = 'DELETE FROM `blockchain-etl-internal.crypto_gnosischain_partitioned.traces_by_input_{table_suffix}` WHERE DATE(block_timestamp) <= \'{ds}\';\n'
+CLEAN_LOGS_SQL_STATEMENT_TEMPLATE = 'DELETE FROM `gnosischain-production.crypto_gnosischain_partitioned.logs_by_topic_{table_suffix}` WHERE DATE(block_timestamp) <= \'{ds}\';\n'
+CLEAN_TRACES_SQL_STATEMENT_TEMPLATE = 'DELETE FROM `gnosischain-production.crypto_gnosischain_partitioned.traces_by_input_{table_suffix}` WHERE DATE(block_timestamp) <= \'{ds}\';\n'
 
 def generate_clean_partitioned_logs_script(ds, start_index, end_index, sql_statement_template):
     hex_chars = '0123456789abcdef'

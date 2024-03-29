@@ -266,7 +266,8 @@ def build_export_dag(
                 output=os.path.join(tempdir, "traces.json"),
                 max_workers=export_max_workers,
                 provider_uri=provider_uri,
-                genesis_traces=export_genesis_traces_option
+                genesis_traces=export_genesis_traces_option,
+                daofork_traces=export_traces_toggle
             )
 
             copy_to_export_path(

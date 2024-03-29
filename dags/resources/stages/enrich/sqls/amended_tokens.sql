@@ -15,7 +15,7 @@ deduplicated_token_amendments AS (
         ANY_VALUE(symbol) AS symbol,
         ANY_VALUE(name) AS name,
         ANY_VALUE(decimals) AS decimals,
-    FROM `blockchain-etl-internal.common.token_amendments`
+    FROM `gnosischain-prodution.common.token_amendments`
     GROUP BY address
 )
 SELECT 

@@ -14,6 +14,6 @@ DAG = build_amend_dag(
     chain='gnosischain',
     **read_amend_dag_vars(
         var_prefix='gnosischain_',
-        schedule_interval='30 8 * * *'
+        schedule_interval='50 15 * * *'
     )
 )

@@ -26,7 +26,7 @@ def build_load_dag(
     destination_dataset_project_id,
     chain='gnosischain',
     notification_emails=None,
-    load_start_date=datetime(2018, 7, 1),
+    load_start_date=datetime(2018, 10, 8),
     load_end_date=None,
     load_catchup=False,
     schedule_interval='0 0 * * *',
@@ -90,8 +90,8 @@ def build_load_dag(
             dag=dag
         )
 
-        def load_task(ds, **kwargs):
-            client = bigquery.Client()
+        def load_task(ds, bigquery_location='EU', **kwargs):
+            client = bigquery.Client(location=bigquery_location)
             job_config = bigquery.LoadJobConfig()
             schema_path = os.path.join(dags_folder, 'resources/stages/raw/schemas/{task}.json'.format(task=task))
             schema = client.schema_from_json(schema_path)
@@ -127,12 +127,12 @@ def build_load_dag(
         return load_operator
 
     def add_enrich_tasks(task, time_partitioning_field='block_timestamp', dependencies=None, always_load_all_partitions=False):
-        def enrich_task(ds, **kwargs):
+        def enrich_task(ds, bigquery_location='EU', **kwargs):
             template_context = kwargs.copy()
             template_context['ds'] = ds
             template_context['params'] = environment
 
-            client = bigquery.Client()
+            client = bigquery.Client(location=bigquery_location)
 
             # Need to use a temporary table because bq query sets field modes to NULLABLE and descriptions to null
             # when writeDisposition is WRITE_TRUNCATE

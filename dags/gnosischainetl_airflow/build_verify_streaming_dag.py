@@ -19,7 +19,7 @@ def build_verify_streaming_dag(
         verify_partitioned_tables=False,
         extra_streaming_tables=None,
         parse_destination_dataset_project_id='',
-        start_date=datetime(2018, 7, 1),
+        start_date=datetime(2018, 10, 8),
         schedule_interval='*/10 * * * *',
         max_lag_in_minutes=15):
     dataset_name = 'crypto_{}'.format(chain)
