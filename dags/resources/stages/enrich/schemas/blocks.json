@@ -25,7 +25,6 @@
     {
         "name": "nonce",
         "type": "STRING",
-        "mode": "REQUIRED",
         "description": "Hash of the generated proof-of-work"
     },
     {
