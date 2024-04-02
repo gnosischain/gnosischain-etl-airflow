@@ -53,13 +53,13 @@
     },
     {
         "name": "difficulty",
-        "type": "NUMERIC",
-        "description": "Integer of the difficulty for this block"
+        "type": "STRING",
+        "description": "Integer (string format) of the difficulty for this block"
     },
     {
         "name": "total_difficulty",
-        "type": "NUMERIC",
-        "description": "Integer of the total difficulty of the chain until this block"
+        "type": "STRING",
+        "description": "Integer (string format) of the total difficulty of the chain until this block"
     },
     {
         "name": "size",

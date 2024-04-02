@@ -157,7 +157,8 @@ def create_or_update_history_table(
         destination_project_id,
         sqls_folder,
         parse_all_partitions,
-        time_func=time.time
+        time_func=time.time,
+        bigquery_location='EU'
 ):
     table_name = table_definition['table']['table_name']
 
@@ -224,7 +225,7 @@ def create_or_update_history_table(
         copy_job_config.write_disposition = 'WRITE_TRUNCATE'
         dataset = create_dataset(bigquery_client, dataset_name, internal_project_id)
         dest_table_ref = dataset.table(history_table_name)
-        copy_job = bigquery_client.copy_table(temp_table_ref, dest_table_ref, location='US', job_config=copy_job_config)
+        copy_job = bigquery_client.copy_table(temp_table_ref, dest_table_ref, location=bigquery_location, job_config=copy_job_config)
         submit_bigquery_job(copy_job, copy_job_config)
         assert copy_job.state == 'DONE'
         # Need to do update description as copy above won't respect the description in case destination table
