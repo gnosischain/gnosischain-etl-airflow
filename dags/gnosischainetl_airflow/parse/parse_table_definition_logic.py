@@ -158,7 +158,8 @@ def create_or_update_history_table(
         sqls_folder,
         parse_all_partitions,
         time_func=time.time,
-        bigquery_location='EU'
+        bigquery_location='EU',
+        time_partitioning_type=bigquery.TimePartitioningType.DAY
 ):
     table_name = table_definition['table']['table_name']
 
@@ -179,7 +180,8 @@ def create_or_update_history_table(
 
     table_description = table_definition['table']['table_description']
     temp_table.description = table_description
-    temp_table.time_partitioning = bigquery.TimePartitioning(field='block_timestamp')
+    temp_table.time_partitioning = bigquery.TimePartitioning(type_=time_partitioning_type,
+                                                             field='block_timestamp')
     logging.info('Creating table: ' + json.dumps(temp_table.to_api_repr()))
     temp_table = bigquery_client.create_table(temp_table)
     assert temp_table.table_id == temp_table_name

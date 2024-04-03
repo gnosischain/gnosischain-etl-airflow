@@ -126,7 +126,7 @@ def build_load_dag(
         wait_sensor >> load_operator
         return load_operator
 
-    def add_enrich_tasks(task, time_partitioning_field='block_timestamp', dependencies=None, always_load_all_partitions=False):
+    def add_enrich_tasks(task, time_partitioning_field='block_timestamp', dependencies=None, always_load_all_partitions=False, time_partitioning_type=TimePartitioningType.DAY):
         def enrich_task(ds, bigquery_location='EU', **kwargs):
             template_context = kwargs.copy()
             template_context['ds'] = ds
@@ -151,7 +151,7 @@ def build_load_dag(
             table.description = read_file(description_path)
             if time_partitioning_field is not None:
                 # Set partitioning by Month, other options: DAY (we might hit partition limits on BigQuery)
-                table.time_partitioning = TimePartitioning(type_=TimePartitioningType.MONTH,
+                table.time_partitioning = TimePartitioning(type_=time_partitioning_type,
                                                            field=time_partitioning_field)
             logging.info('Creating table: ' + json.dumps(table.to_api_repr()))
             table = client.create_table(table)
