@@ -12,7 +12,7 @@ from airflow.providers.google.cloud.sensors.gcs import GCSObjectExistenceSensor
 from airflow.operators.email import EmailOperator
 from airflow.operators.python import PythonOperator
 from google.cloud import bigquery
-from google.cloud.bigquery import TimePartitioning, SchemaField
+from google.cloud.bigquery import TimePartitioning, TimePartitioningType, SchemaField
 
 from gnosischainetl_airflow.bigquery_utils import submit_bigquery_job
 
@@ -150,7 +150,9 @@ def build_load_dag(
                 dags_folder, 'resources/stages/enrich/descriptions/{task}.txt'.format(task=task))
             table.description = read_file(description_path)
             if time_partitioning_field is not None:
-                table.time_partitioning = TimePartitioning(field=time_partitioning_field)
+                # Set partitioning by Month, other options: DAY (we might hit partition limits on BigQuery)
+                table.time_partitioning = TimePartitioning(type_=TimePartitioningType.MONTH,
+                                                           field=time_partitioning_field)
             logging.info('Creating table: ' + json.dumps(table.to_api_repr()))
             table = client.create_table(table)
             assert table.table_id == temp_table_name
