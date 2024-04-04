@@ -1,5 +1,5 @@
 eth-hash<=0.7.0
-ethereum-etl-temp==2.3.4     # Requires web3>=5.29,<6
+ethereum-etl-temp==2.3.4
 web3==6.15.1
 # Prevents ImportError: cannot import name 'WKBWriter' from 'shapely.geos' (/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/shapely/geos.py)
 shapely < 2.0.0

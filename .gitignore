@@ -57,3 +57,4 @@ voxometadata/secrets
 .env
 
 .python-version
+.venv

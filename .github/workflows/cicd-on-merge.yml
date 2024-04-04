@@ -40,7 +40,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ethereum-etl-parse:latest -f parse.Dockerfile .
+        docker build -t gnosischain-etl-parse:latest -f parse.Dockerfile .
 
     - name: Run Docker image
       run: |
@@ -51,7 +51,7 @@ jobs:
         docker run \
           -v $PWD:/app \
           -e GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json \
-          ethereum-etl-parse:latest \
+          gnosischain-etl-parse:latest \
           --project ${{ vars.PARSE_PROJECT }} \
           --dataset_name $DATASET_NAME \
           --dataset_folder "/app/${{ matrix.dir }}" \
