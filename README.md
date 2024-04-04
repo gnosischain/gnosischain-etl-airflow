@@ -4,7 +4,7 @@ This project is based on the work from [Ethereum ETL Airflow](https://github.com
 
 ## Setting up Airflow DAGs using Google Cloud Composer
 
-We have put together an extenstive documentation containing the terraform specs that are required to spin up a Google Composer instance of Airflow.
+We have put together an extenstive documentation containing the necessary terraform specs to spin up a Google Composer instance of Airflow.
 
 See [./docs/terraform_examples](./docs/terraform_examples) for more details.
 
